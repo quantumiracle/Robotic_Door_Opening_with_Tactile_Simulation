@@ -1,0 +1,11 @@
+# required for IK controllers
+pybullet==1.9.5
+
+# required for GymWrapper
+gym
+
+# Mac OS X only
+hidapi
+
+# required for demonstration utils
+h5py

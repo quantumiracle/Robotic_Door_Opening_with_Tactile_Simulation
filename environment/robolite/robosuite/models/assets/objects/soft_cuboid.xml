@@ -1,0 +1,67 @@
+<mujoco model="soft_cuboid">
+<size njmax="8000" nconmax="2000"/> 
+  <!-- <asset>
+    <mesh file="meshes/bottle.stl" name="bottle_mesh"/>
+    <texture type="skybox" file="../textures/glass.png" name="tex-glass"/>
+    <material name="glass" reflectance="0.5" texrepeat="5 5" texture="tex-glass" texuniform="true"/>
+  </asset> -->
+  <visual>
+		<map fogend="5" fogstart="3" force="0.1" zfar="10" znear="0.01"/>
+		<quality shadowsize="2048"/>
+		<global offheight="26" offwidth="26"/>
+	</visual>
+
+	<asset>
+		<texture builtin="flat" height="32" name="wall_geom" type="2d" width="32"/>
+		<texture builtin="flat" height="32" name="frame_geom" type="2d" width="32"/>
+		<texture builtin="flat" height="32" name="door_geom" type="2d" width="32"/>
+		<texture builtin="flat" height="32" name="knob_geom" type="2d" width="32"/>
+		<texture builtin="gradient" height="128" rgb1="0.4 0.6 0.8" rgb2="0 0 0" type="skybox" width="128"/>
+		<texture builtin="checker" height="512" name="texplane" rgb1="0.2 0.3 0.4" rgb2="0.1 0.15 0.2" type="2d" width="512"/>
+		<material name="Paint" shininess="0.46" specular="0.44" texture="wall_geom"/>
+		<material name="Wood" shininess="0.14" specular="0.16" texture="frame_geom"/>
+		<material name="Carpet" shininess="0.04" specular="0.03" texture="door_geom"/>
+		<material name="Metal" shininess="0.89" specular="0.95" texture="knob_geom"/>
+		<material name="Floor" texture="texplane"/>
+	</asset>
+
+  <worldbody>
+		<light diffuse="0.9 1.0 0.9" dir="0.2 -0.16 -0.43" directional="true" pos="1.05 4.16 5.09"/>
+		<light diffuse="1.0 0.9 0.9" dir="-0.24 0.17 -0.49" directional="true" pos="4.97 4.53 3.09"/>s
+		<geom material="Floor" name="floor" pos="0 0 -0.05" size="4.0 4.0 0.05" type="plane"/>
+
+  <!-- <body name="box" pos="0 0 0.01">
+      <freejoint/>
+      <composite type="box" count="18 9 2" spacing="0.002">
+          <joint kind="main" stiffness="0.1 " damping="0.1" solreffix="-0.05 -1"/>
+          <tendon kind="main" stiffness="0.1"  damping="0.1" solreffix="-0.05 -1"/>
+          <skin texcoord="true" material="Carpet" rgba=".7 .7 .7 1"/>
+          <skin material="Carpet" inflate="0.001" subgrid="3" texcoord="true"/>
+          <geom type="sphere" size="0.002" rgba=".8 .2 .1 1"/>
+      </composite>
+  </body> -->
+
+<body name="B3_5" pos="0 0 1">
+    <freejoint/>
+    <composite type="cloth" count="9 9 1" spacing="0.01" flatinertia="0.01">
+        <joint kind="main" damping="0.001"/>
+        <skin material="Carpet" texcoord="true" inflate="0.005" subgrid="2"/>
+        <geom type="capsule" size="0.015 0.01" rgba=".8 .2 .1 1"/>
+    </composite>
+</body>   
+       <!-- <body pos="0 0 0.05">
+         <joint type="free"/>
+         <geom type="box" size=".005 .005 .005" rgba="0 .9 0 1"/>
+      </body> -->
+
+<!-- <body name="ellipsoid" pos="0 0 1">
+    <freejoint/>
+    <composite type="ellipsoid" count="5 7 9" spacing="0.05">
+        <tendon kind="main" stiffness="0.0002" damping="0.0005"/>
+        <skin texcoord="true" material="Carpet" rgba=".7 .7 .7 1"/>
+        <geom type="capsule" size=".015 0.05" rgba=".8 .2 .1 1"/>
+    </composite>
+</body> -->
+
+  </worldbody>
+</mujoco>

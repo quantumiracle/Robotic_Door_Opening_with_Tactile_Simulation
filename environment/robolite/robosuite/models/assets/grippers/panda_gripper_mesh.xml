@@ -1,0 +1,286 @@
+<mujoco model="panda_hand">
+    <size njmax="500" nconmax="100" />
+    <asset>
+        <mesh name="hand" file="meshes/panda_gripper/hand.stl" />
+        <mesh name="pad" file="meshes/panda_gripper/pad.stl"  scale="0.001 0.001 0.001"/>  
+        <mesh name="hand_vis" file="meshes/panda_gripper/hand_vis.stl" />
+        <mesh name="finger" file="meshes/panda_gripper/finger.stl" />
+        <!-- <mesh name="finger_vis" file="meshes/panda_gripper/finger_vis.stl" /> -->
+        <mesh name="finger_vis" file="meshes/panda_gripper/finger_vis_tactile.stl" scale="0.001 0.001 0.001"/>
+        <!-- <mesh name="finger_vis2" file="meshes/panda_gripper/finger_longer.stl" /> -->
+
+    </asset>
+
+    <actuator>
+        <position ctrllimited="true" ctrlrange="0 0.04" joint="finger_joint1" kp="1000000" name="gripper_joint1" forcelimited="true" forcerange="-20 20"/>
+        <position ctrllimited="true" ctrlrange="-0.04 0" joint="finger_joint2" kp="1000000" name="gripper_joint2" forcelimited="true" forcerange="-20 20"/>
+    </actuator>
+
+    <worldbody>
+      <body name="right_gripper" pos="0 0 -0.018">
+
+            <site name="ft_frame" pos="0 0 0" size="0.01 0.01 0.01" rgba="1 0 0 1" type="sphere" group="1"></site>
+
+            <inertial pos="0 0 0.17" quat="0.707107 0.707107 0 0" mass="0.0" diaginertia="0.09 0.07 0.05" />
+            <!--<geom type="mesh" contype="0" conaffinity="0" group="1" mesh="link7" /> -->
+      <!--       <geom pos="0 0 0.107" quat="0.92388 0 0 -0.382683" type="mesh" contype="0" conaffinity="0" group="1" mesh="hand" name="hand_collision"/> -->
+
+                  <!--<geom type="mesh" contype="0" conaffinity="0" group="1" mesh="link7" /> -->
+            <geom pos="0 0 0." quat="0.707107 0 0 0.707" type="mesh" contype="0" conaffinity="0" group="1" mesh="hand_vis" name="hand_visual" rgba="1 1 1 1"/>
+
+
+            <geom pos="0 0 0." quat="0.707107 0 0 0.707" type="mesh" mesh="hand"  group="0" name="hand_collision"/>
+
+            <!-- This site was added for visualization. -->
+            <site name="grip_site" pos="0 0 0.1050" size="0.01 0.01 0.01" rgba="1 0 0 1" type="sphere" group="1"/>
+            <!-- This site was added for visualization. -->
+            <site name="grip_site_cylinder" pos="0 0 0.1399" size="0.005 10" rgba="0 1 0 0.3" type="cylinder" group="1"/>
+
+            <body name="leftfinger" pos="0 0 0.0524" quat="0.707107 0 0 0.70">
+                <inertial pos="0 0 0.05" mass="0.1" diaginertia="0.01 0.01 0.005" />
+                <joint name="finger_joint1" pos="0 0 0" axis="0 1 0" type="slide" limited="true" range="0.0 0.04" damping="100"/>
+                <geom quat="0.707107 0.707107 0 0" type="mesh" contype="0" conaffinity="0" group="1" mesh="finger_vis" name="finger1_visual"/>
+                <!-- <geom quat="0.707107 0.707107 0 0" type="mesh" group="1" mesh="finger_vis" name="finger1_visual"/> -->
+
+                <!-- left finger tactile -->
+                <body name="touch_l1_body" pos="-0.004 0.0001 0.039"  >
+                <site name="touch_l1" type="cylinder" pos="0 -0.0001 0" size="0.001 0.001" euler="1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="lpad1"/>
+                </body>
+
+                <body name="touch_l2_body" pos="-0.004 0.0001 0.045"  >
+                <site name="touch_l2" type="cylinder" pos="0 -0.0001 0" size="0.001 0.001" euler="1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="lpad2"/>
+                </body>
+
+                <body name="touch_l3_body" pos="-0.004 0.0001 0.051"  >
+                <site name="touch_l3" type="cylinder" pos="0 -0.0001 0" size="0.001 0.001" euler="1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="lpad3"/>
+                </body>
+ 
+                <body name="touch_l4_body" pos="-0.004 0.0001 0.057"  >
+                <site name="touch_l4" type="cylinder" pos="0 -0.0001 0" size="0.001 0.001" euler="1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="lpad4"/>
+                </body>
+
+                <body name="touch_l5_body" pos="-0.004 0.0001 0.063"  >
+                <site name="touch_l5" type="cylinder" pos="0 -0.0001 0" size="0.001 0.001" euler="1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="lpad5"/>
+                </body>
+
+                <body name="touch_l6_body" pos="0 0.0001 0.042"  >
+                <!-- <geom type="box" pos="0.001 -0.0035 0.0536" size=".001 .005 .005" rgba="0 .8 .6 0.5" contype="0" conaffinity="0"/> -->
+                <site name="touch_l6" type="cylinder" pos="0 -0.0001 0" size="0.001 0.0001" euler="1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="lpad6"/>
+                </body>
+
+                <body name="touch_l7_body" pos="0 0.0001 0.048"  >
+                <site name="touch_l7" type="cylinder" pos="0 -0.0001 0" size="0.001 0.0001" euler="1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="lpad7"/>
+                </body>
+
+                <body name="touch_l8_body" pos="0 0.0001 0.054"  >
+                <site name="touch_l8" type="cylinder" pos="0 -0.0001 0" size="0.001 0.0001" euler="1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="lpad8"/>
+                </body>
+
+                <body name="touch_l9_body" pos="0 0.0001 0.060"  >
+                <site name="touch_l9" type="cylinder" pos="0 -0.0001 0" size="0.001 0.0001" euler="1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="lpad9"/>
+                </body>
+
+                <body name="touch_l10_body" pos="0 0.0001 0.066"  >
+                <site name="touch_l10" type="cylinder" pos="0 -0.0001 0" size="0.001 0.0001" euler="1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="lpad10"/>
+                </body>
+
+                <body name="touch_l11_body" pos="0.004 0.0001 0.039"  >
+                <site name="touch_l11" type="cylinder" pos="0 -0.0001 0" size="0.001 0.0001" euler="1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="lpad11"/>
+                </body>
+
+                <body name="touch_l12_body" pos="0.004 0.0001 0.045"  >
+                <site name="touch_l12" type="cylinder" pos="0 -0.0001 0" size="0.001 0.0001" euler="1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="lpad12"/>
+                </body>
+
+                <body name="touch_l13_body" pos="0.004 0.0001 0.051"  >
+                <site name="touch_l13" type="cylinder" pos="0 -0.0001 0" size="0.001 0.0001" euler="1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="lpad13"/>
+                </body>
+
+                <body name="touch_l14_body" pos="0.004 0.0001 0.057"  >
+                <site name="touch_l14" type="cylinder" pos="0 -0.0001 0" size="0.001 0.0001" euler="1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="lpad14"/>
+                </body>
+
+                <body name="touch_l15_body" pos="0.004 0.0001 0.063"  >
+                <site name="touch_l15" type="cylinder" pos="0 -0.0001 0" size="0.001 0.0001" euler="1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="lpad15"/>
+                </body>
+
+
+                <!-- <geom type="mesh" mesh="finger"  solimp="0.9 0.95 0.005" solmix="10000" solref="0.05 1"/> -->
+                <!-- <geom type="mesh" mesh="fingerc" solimp="0.9 0.95 0.005" solmix="10000" solref="0.05 1"/> -->
+                <!-- <geom type="mesh" mesh="fingerb" solimp="0.9 0.95 0.005" solmix="10000" solref="0.05 1"/> -->
+                <geom type="mesh" conaffinity="1" contype="0" solref="0.02 1" friction="1 0 0" condim="4" mesh="finger" name="finger1_collision"/>
+                <body name="finger_joint1_tip" pos="0 0.0085 0.056">
+                    <inertial pos="0 0 0" quat="0 0 0 1" mass="0.01" diaginertia="0.01 0.01 0.01" />
+                    <geom size="0.008 0.004 0.008" pos="0 -0.005 -0.015" quat="0 0 0 1" type="box" solref="0.01 0.5" friction = "1 0 0" conaffinity="1" contype="1" name="finger1_tip_collision"/>
+
+                </body>
+            </body>
+
+
+            <body name="rightfinger" pos="0 0 0.0524" quat="0.707107 0 0 0.70">
+                <inertial pos="0 0 0.05" mass="0.1" diaginertia="0.01 0.01 0.005" />
+                <joint name="finger_joint2" pos="0 0 0" axis="0 1 0" type="slide" limited="true" range="-0.04 0.0" damping="100"/>
+                <geom quat="0 0 0.707107 0.707107" type="mesh" contype="0" conaffinity="0" group="1" mesh="finger_vis" name="finger2_visual"/>
+                <!-- <geom quat="0 0 0.707107 0.707107" type="mesh" contype="1" conaffinity="1" group="1" mesh="finger_vis" name="finger2_visual"/> -->
+
+
+                <!-- right finger tactile -->
+                <body name="touch_r1_body" pos="-0.004 0.0001 0.039"  >
+                <site name="touch_r1" type="cylinder" pos="0 0.0001 0" size="0.001 0.001" euler="-1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="rpad1"/>
+                </body>
+
+                <body name="touch_r2_body" pos="-0.004 0.0001 0.045"  >
+                <site name="touch_r2" type="cylinder" pos="0 0.0001 0" size="0.001 0.001" euler="-1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="rpad2"/>
+                </body>
+
+                <body name="touch_r3_body" pos="-0.004 0.0001 0.051"  >
+                <site name="touch_r3" type="cylinder" pos="0 0.0001 0" size="0.001 0.0001" euler="-1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="rpad3"/>
+                </body>
+ 
+                <body name="touch_r4_body" pos="-0.004 0.0001 0.057"  >
+                <site name="touch_r4" type="cylinder" pos="0 0.0001 0" size="0.001 0.0001" euler="-1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="rpad4"/>
+                </body>
+
+                <body name="touch_r5_body" pos="-0.004 0.0001 0.063"  >
+                <site name="touch_r5" type="cylinder" pos="0 0.0001 0" size="0.001 0.0001" euler="-1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="rpad5"/>
+                </body>
+
+                <body name="touch_r6_body" pos="0 0.0001 0.042"  >
+                <!-- <geom type="box" pos="0.001 -0.0035 0.0536" size=".001 .005 .005" rgba="0 .8 .6 0.5" contype="0" conaffinity="0"/> -->
+                <site name="touch_r6" type="cylinder" pos="0 0.0001 0" size="0.001 0.0001" euler="-1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="rpad6"/>
+                </body>
+
+                <body name="touch_r7_body" pos="0 0.0001 0.048"  >
+                <site name="touch_r7" type="cylinder" pos="0 0.0001 0" size="0.001 0.0001" euler="-1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="rpad7"/>
+                </body>
+
+                <body name="touch_r8_body" pos="0 0.0001 0.054"  >
+                <site name="touch_r8" type="cylinder" pos="0 0.0001 0" size="0.001 0.0001" euler="-1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="rpad8"/>
+                </body>
+
+                <body name="touch_r9_body" pos="0 0.0001 0.060"  >
+                <site name="touch_r9" type="cylinder" pos="0 0.0001 0" size="0.001 0.0001" euler="-1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="rpad9"/>
+                </body>
+
+                <body name="touch_r10_body" pos="0 0.0001 0.066"  >
+                <site name="touch_r10" type="cylinder" pos="0 0.0001 0" size="0.001 0.0001" euler="-1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="rpad10"/>
+                </body>
+
+                <body name="touch_r11_body" pos="0.004 0.0001 0.039"  >
+                <site name="touch_r11" type="cylinder" pos="0 0.0001 0" size="0.001 0.0001" euler="-1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="rpad11"/>
+                </body>
+
+                <body name="touch_r12_body" pos="0.004 0.0001 0.045"  >
+                <site name="touch_r12" type="cylinder" pos="0 0.0001 0" size="0.001 0.0001" euler="-1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="rpad12"/>
+                </body>
+
+                <body name="touch_r13_body" pos="0.004 0.0001 0.051"  >
+                <site name="touch_r13" type="cylinder" pos="0 0.0001 0" size="0.001 0.0001" euler="-1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="rpad13"/>
+                </body>
+
+                <body name="touch_r14_body" pos="0.004 0.0001 0.057"  >
+                <site name="touch_r14" type="cylinder" pos="0 0.0001 0" size="0.001 0.0001" euler="-1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="rpad14"/>
+                </body>
+
+                <body name="touch_r15_body" pos="0.004 0.0001 0.063"  >
+                <site name="touch_r15" type="cylinder" pos="0 0.0001 0" size="0.001 0.0001" euler="-1.5708 0 0" rgba="0 0.5 0.5 0.33"/>
+                <geom type="mesh" mesh="pad"  group="1" name="rpad15"/>
+                </body>
+
+                <!-- <geom quat="0 0 0 1" type="mesh" mesh="finger"  solimp="0.9 0.95 0.005" solmix="10000" solref="0.05 1"/> -->
+                <!-- <geom quat="0 0 0 1" type="mesh" mesh="fingerb" solimp="0.9 0.95 0.005" solmix="10000" solref="0.05 1"/> -->
+                <!-- <geom quat="0 0 0 1" type="mesh" mesh="fingerc" solimp="0.9 0.95 0.005" solmix="10000" solref="0.05 1"/> -->
+                <geom quat="0 0 0 1" type="mesh" conaffinity="1" contype="0" solref="0.02 1" friction="1 0 0" condim="4" mesh="finger" name="finger2_collision"/>
+                <body name="finger_joint2_tip" pos="0 -0.0085 0.056">
+                    <inertial pos="0 0 0" quat="0 0 0 1" mass="0.01" diaginertia="0.01 0.01 0.01" />
+                    <geom size="0.008 0.004 0.008" pos="0 0.005 -0.015" quat="0 0 0 1" type="box" solref="0.01 0.5" friction = "1 0 0" conaffinity="1" contype="1" name="finger2_tip_collision"/>
+
+                </body>
+            </body>
+        </body>
+    </worldbody>
+
+    <sensor>
+        <force name="force_ee" site="ft_frame"/>
+        <torque name="torque_ee" site="ft_frame"/>
+
+        <force name="touch_l1" site="touch_l1"></force>
+        <force name="touch_l2" site="touch_l2"></force>
+        <force name="touch_l3" site="touch_l3"></force>
+        <force name="touch_l4" site="touch_l4"></force>
+        <force name="touch_l5" site="touch_l5"></force>
+        <force name="touch_l6" site="touch_l6"></force>
+        <force name="touch_l7" site="touch_l7"></force>
+        <force name="touch_l8" site="touch_l8"></force>
+        <force name="touch_l9" site="touch_l9"></force>
+        <force name="touch_l10" site="touch_l10"></force>
+        <force name="touch_l11" site="touch_l11"></force>
+        <force name="touch_l12" site="touch_l12"></force>
+        <force name="touch_l13" site="touch_l13"></force>
+        <force name="touch_l14" site="touch_l14"></force>
+        <force name="touch_l15" site="touch_l15"></force>
+
+        <!-- <touch name="touch_l1" site="touch_l1"></touch>
+        <touch name="touch_l2" site="touch_l2"></touch>
+        <touch name="touch_l3" site="touch_l3"></touch>
+        <touch name="touch_l4" site="touch_l4"></touch>
+        <touch name="touch_l5" site="touch_l5"></touch>
+        <touch name="touch_l6" site="touch_l6"></touch>
+        <touch name="touch_l7" site="touch_l7"></touch>
+        <touch name="touch_l8" site="touch_l8"></touch>
+        <touch name="touch_l9" site="touch_l9"></touch>
+        <touch name="touch_l10" site="touch_l10"></touch>
+        <touch name="touch_l11" site="touch_l11"></touch>
+        <touch name="touch_l12" site="touch_l12"></touch>
+        <touch name="touch_l13" site="touch_l13"></touch>
+        <touch name="touch_l14" site="touch_l14"></touch>
+        <touch name="touch_l15" site="touch_l15"></touch> -->
+
+        <force name="touch_r1" site="touch_r1"></force>
+        <force name="touch_r2" site="touch_r2"></force>
+        <force name="touch_r3" site="touch_r3"></force>
+        <force name="touch_r4" site="touch_r4"></force>
+        <force name="touch_r5" site="touch_r5"></force>
+        <force name="touch_r6" site="touch_r6"></force>
+        <force name="touch_r7" site="touch_r7"></force>
+        <force name="touch_r8" site="touch_r8"></force>
+        <force name="touch_r9" site="touch_r9"></force>
+        <force name="touch_r10" site="touch_r10"></force>
+        <force name="touch_r11" site="touch_r11"></force>
+        <force name="touch_r12" site="touch_r12"></force>
+        <force name="touch_r13" site="touch_r13"></force>
+        <force name="touch_r14" site="touch_r14"></force>
+        <force name="touch_r15" site="touch_r15"></force>
+
+
+    </sensor>
+</mujoco>

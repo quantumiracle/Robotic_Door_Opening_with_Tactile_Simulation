@@ -1,0 +1,18 @@
+<mujoco model="cabinet">
+    <compiler angle="radian" />
+    <size njmax="500" nconmax="100" />
+    <asset>
+        <mesh name="cabinet_body" file="./cabinet/cabinet_body.STL" scale="0.001 0.001 0.001" />
+        <mesh name="cabinet_door" file="./cabinet/cabinet_door.STL" scale="0.001 0.001 0.001" />
+        <mesh name="cabinet_knob" file="./cabinet/cabinet_knob.STL" scale="0.001 0.001 0.001" />
+    </asset>
+    <worldbody>
+        <geom quat="0.707388 0.706825 0 0" type="mesh" contype="0" conaffinity="0" group="1" rgba="0 0 0.8 1" mesh="cabinet_body" />
+        <body name="door_link" pos="0.774 -0.0055 0.095">
+            <inertial pos="-0.0322282 0.000814966 0.0321541" quat="0.706133 -0.0631938 -0.0614386 0.702573" mass="1.343" diaginertia="0.115549 0.0813332 0.0350412" />
+            <joint name="base_to_door" pos="0 0 0" axis="0 0 1" limited="true" range="0 1.0" />
+            <geom pos="0.006 -0.0055 0" quat="0.000563312 0.000562864 0.706825 0.707388" type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 1" mesh="cabinet_door" />
+            <geom pos="-0.2175 0.0055 0.217" type="mesh" contype="0" conaffinity="0" group="1" rgba="0 0 0 1" mesh="cabinet_knob" />
+        </body>
+    </worldbody>
+</mujoco>

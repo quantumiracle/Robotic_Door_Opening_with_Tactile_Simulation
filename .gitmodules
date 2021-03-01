@@ -1,0 +1,3 @@
+[submodule "environment/robolite"]
+	path = environment/robolite
+	url = git@github.com:gzz2000/robolite.git
