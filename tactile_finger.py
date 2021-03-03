@@ -127,6 +127,7 @@ class TactileTestEnv(MujocoEnv):
 if __name__ == '__main__':
     import time
     import numpy as np
+    import os
     seed=3
     np.random.seed(seed)
 
@@ -159,5 +160,6 @@ if __name__ == '__main__':
                 env.step(0)
                 # env.render()
                 step+=1
-
-            np.save(PATH+'sim_{}_{}'.format(str(w), str(d)), log)
+            path = PATH+'sim_{}_{}'.format(str(w), str(d))
+            os.makedirs(path, exist_ok=True)
+            np.save(path, log)
