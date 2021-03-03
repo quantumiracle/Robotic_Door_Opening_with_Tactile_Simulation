@@ -51,7 +51,7 @@ Dependencies: robosuite, openai gym, etc
 * Train the *PandaOpenDoorFKTactile* environment with RL algorithm TD3:
 
   ```bash
-  python train.py --train --env --pandapushfktactile --process 5 
+  python train.py --train --env pandapushfktactile --process 5 
   ```
 
 * Test a trained model with saved in `data/weights/**MODEL_TIME**`  and MODEL_INDEX (an int number indicating at which episode the mode is saved):
