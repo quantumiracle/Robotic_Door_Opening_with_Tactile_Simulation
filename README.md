@@ -44,7 +44,7 @@ Dependencies: robosuite, openai gym, MuJoCo, mujoco-py, torch, etc
 * ```./train.py```  is the main training script.
 * ```tactile_finger.py``` is a testing script for testing the simulated tactile sensing in an independent environment. It places a block on a tactile sensor and reads the force distribution. The force readings are saved in ```./data/```.
 * ```default_params.py``` defines all the hyperparameters for training, including the ```randomized_params```, which specifies the randomized parameters as defined in ```panda_open_door.py```.
-* ```./rl/td3/train_td3.py``` is for training/fine-tuning/testing with　TD3 algorithm.
+* ```./rl/td3/train_td3.py``` is for training/fine-tuning/testing with TD3 algorithm.
 
 ## Start
 
