@@ -22,6 +22,7 @@ Dependencies: robosuite, openai gym, etc
 * Check the requirements of *robosuite* package, we use a local version of it.
 
   ```bash
+  pip install -r requirements.txt
   cd environment/robolite
   pip install -e .
   ```
