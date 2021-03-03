@@ -41,7 +41,7 @@ Dependencies: robosuite, openai gym, MuJoCo, mujoco-py, torch, etc
 * In ```./environment/robolite/robosuite/models/arenas``` file ```table_cabinet_arena.py``` defines the script of the environment.
 * In ```./environment/robolite/robosuite/environments``` file ```panda_open_door.py``` defines the robotic door opening task (**important!**). Reward is defined here.
 * In ```./environment``` file ```pandaopendoorfktactile.py``` defines a wrapper of door opening task for training RL in gym API.
-* ```./train.py```  is the main training script.
+* ```train.py```  is the main training script.
 * ```tactile_finger.py``` is a testing script for testing the simulated tactile sensing in an independent environment. It places a block on a tactile sensor and reads the force distribution. The force readings are saved in ```./data/```.
 * ```default_params.py``` defines all the hyperparameters for training, including the ```randomized_params```, which specifies the randomized parameters as defined in ```panda_open_door.py```.
 * ```./rl/td3/train_td3.py``` is for training/fine-tuning/testing with TD3 algorithm.
