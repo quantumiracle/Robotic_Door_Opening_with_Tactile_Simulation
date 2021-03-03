@@ -7,7 +7,7 @@ import sys, os
 sys.path.append(os.path.dirname(os.getcwd()))
 from utils.common_func import Drawer
 
-class PandaOpenDoorFKTactile(_PandaOpenDoor):
+class PandaOpenDoorFKTactile(PandaOpenDoor):
     def __init__(self, use_tactile=True, full_obs=True, **kwargs):
         super().__init__(use_tactile=use_tactile, full_obs=full_obs, gripper_type="PandaGripperTactile", **kwargs)
         obs_dim = 12

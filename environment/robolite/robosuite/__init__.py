@@ -11,8 +11,8 @@ from robosuite.environments.panda_lift import PandaLift
 from robosuite.environments.panda_stack import PandaStack
 from robosuite.environments.panda_pick_place import PandaPickPlace
 from robosuite.environments.panda_nut_assembly import PandaNutAssembly
-from robosuite.environments.panda_reach import PandaReach
-from robosuite.environments.panda_push import PandaPush
+# from robosuite.environments.panda_reach import PandaReach
+# from robosuite.environments.panda_push import PandaPush
 from robosuite.environments.panda_open_door import PandaOpenDoor
 
 from robosuite.environments.baxter_lift import BaxterLift
