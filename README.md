@@ -1,5 +1,8 @@
 # Tactile-based Door Opening with Franka Panda Robot in Simulation
 
+Official code for our paper [**Sim-to-Real Transfer for Robotic Manipulation with Tactile Sensory**
+Zihan Ding, Ya-Yen Tsai, Wang Wei Lee, Bidan Huang *International Conference on Intelligent Robots and Systems (IROS) 2021*](https://arxiv.org/abs/2103.00410) (for simulation part only).
+
 ## Description:
 
 ![image](https://github.com/quantumiracle/Robotic_Door_Opening_with_Tactile_Simulation/blob/master/img/tactile_robot_door_open.png)
