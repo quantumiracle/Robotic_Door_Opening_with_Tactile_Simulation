@@ -2,7 +2,7 @@
 
 ## Description:
 
-![Screenshot from 2021-03-01 21-40-09](/home/quantumiracle/Documents/Screenshot from 2021-03-01 21-40-09.png)
+![image](https://github.com/quantumiracle/Robotic_Door_Opening_with_Tactile_Simulation/blob/master/img/tactile_robot_door_open.png)
 
 Robot: Franka Emika Panda
 
