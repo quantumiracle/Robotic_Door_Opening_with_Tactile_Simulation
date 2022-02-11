@@ -32,6 +32,18 @@ Dependencies: robosuite, openai gym, MuJoCo, mujoco-py, torch, etc
   ```
 
    Install with ```-e .``` so that later change of package *robosuite* will  no longer require re-installation.
+   
+## Citation:
+Please cite the our paper if you make use of this repo:
+```
+@article{ding2021sim,
+  title={Sim-to-Real Transfer for Robotic Manipulation with Tactile Sensory},
+  author={Ding, Zihan and Tsai, Ya-Yen and Lee, Wang Wei and Huang, Bidan},
+  journal={arXiv preprint arXiv:2103.00410},
+  year={2021}
+}
+
+```
 
 ## Important Files:
 
