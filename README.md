@@ -23,7 +23,7 @@ Dependencies: robosuite, openai gym, MuJoCo, mujoco-py, torch, etc
 ## Installation:
 * Needs MuJoCo and mujoco-py installed first.
 
-* Check the requirements of *robosuite* package, we use a local version of it.
+* Check the requirements of *robosuite* package, we use a local version of it named "robolite" (which supports domain randomisation and inverse kinematics).
 
   ```bash
   pip install -r requirements.txt
@@ -32,6 +32,8 @@ Dependencies: robosuite, openai gym, MuJoCo, mujoco-py, torch, etc
   ```
 
    Install with ```-e .``` so that later change of package *robosuite* will  no longer require re-installation.
+   
+   Alternatively, we have an independent repo for [robolite](https://github.com/quantumiracle/robolite). Just go there and clone and `pip install`.
    
 ## Citation:
 Please cite the our paper if you make use of this repo:
