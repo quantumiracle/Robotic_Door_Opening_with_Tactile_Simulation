@@ -171,8 +171,8 @@ class MujocoEnv(metaclass=EnvMeta):
 
         # hiding the overlay speeds up rendering significantly
         self.viewer.viewer._hide_overlay = True
-        self.viewer.viewer.cam.elevation = -10           # -30 camera rotation around the axis in the plane going through the frame origin (if 0 you just see a line)
-        self.viewer.viewer.cam.azimuth = 230              # camera rotation around the camera's vertical axis 120
+        self.viewer.viewer.cam.elevation = -30           # camera rotation around the axis in the plane going through the frame origin (if 0 you just see a line)
+        self.viewer.viewer.cam.azimuth = 120              # camera rotation around the camera's vertical axis
 
     def _reset_internal(self):
         """Resets simulation internal configurations."""
